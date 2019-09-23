@@ -1,2 +1,2 @@
 # PyWell
-A collection of independent Python scripts following the Unix philosphy of doing one thing well. Each script is a single function that can be called in mulitple contexts, e.g. directly as a function, via comand line prompt, via AWS lambda invocation, etc. The functions are intended to be easily composable to build more complex applications.
+A collection of independent Python scripts following the Unix philosphy of "do one thing well." To that end, each script is a single function that can be called in mulitple contexts, e.g. independently via comand line prompt, from other Python code as a function, from various AWS sources as a Lambda invocation, etc. The functions are intended to be easily composable to build more complex applications.
