@@ -19,9 +19,7 @@ def run_from_cli(func, description, definitions, required) -> None:
     import os
     import pprint
 
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-    if os.path.exists(os.path.join(BASE_DIR, 'settings.py')):
+    if os.path.exists(os.path.join(os.getcwd(), 'settings.py')):
         import settings
     else:
         settings = {}
@@ -44,7 +42,9 @@ class Struct:
         self.__dict__.update(entries)
 
 def json_serial(obj):
-    """JSON serializer for objects not serializable by default JSON code."""
+    """
+    JSON serializer for objects not serializable by default JSON code.
+    """
     if isinstance(obj, datetime.datetime):
         return obj.isoformat()
     raise TypeError("Type %s not serializable." % type(obj))
@@ -56,9 +56,7 @@ def run_from_lamba(func, description, definitions, required, event) -> str:
     import json
     import os
 
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-    if os.path.exists(os.path.join(BASE_DIR, 'settings.py')):
+    if os.path.exists(os.path.join(os.getcwd(), 'settings.py')):
         import settings
     else:
         settings = {}
