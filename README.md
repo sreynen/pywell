@@ -89,4 +89,8 @@ return run_from_api_gateway(
 )
 ```
 
-Over time, I'll likely add more entry points and also some general-purpose scripts that might be useful in composing more complex projects. (Or you could — pull requests welcome!) For now, this should hopefully give you a sense of the goals of PyWell: to make small reusable pieces of code usable and testable first on Unix command line, and then minimize the work required to export that composability to the web.
+Over time, I'll likely add more entry points and more general-purpose scripts that might be useful in composing more complex projects. (Or you could — pull requests welcome!) For now, this should hopefully give you a sense of the goals of PyWell: to make small reusable pieces of code usable and testable first on Unix command line, and then minimize the work required to export that composability to the web.
+
+## notify_slack.py
+
+This script uses [slackweb](https://github.com/satoshi03/slack-python-webhook) (`pip install slackweb`) to send text notifications to a designated Slack channel via webhook.
