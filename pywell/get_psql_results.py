@@ -12,7 +12,9 @@ ARG_DEFINITIONS = {
     'DB_USER': 'Database user.',
     'DB_PASS': 'Database password.',
     'DB_NAME': 'Database name.',
-    'DB_QUERY': 'Database query, as string or file path ending with ".sql".'
+    'DB_QUERY': 'Database query, as string or file path ending with ".sql".',
+    'NO_RESULTS': 'Optional True flag if the query just needs to run without results.',
+    'DB_VALUES': 'Optional values to fill placeholders in query.'
 }
 
 REQUIRED_ARGS = [
@@ -36,7 +38,13 @@ def get_psql_results(args):
             query = file.read()
     else:
         query = args.DB_QUERY
-    database_cursor.execute(query)
+    if 'DB_VALUES' in args and args.DB_VALUES:
+        database_cursor.execute(query, args.DB_VALUES)
+    else:
+        database_cursor.execute(query)
+    if 'NO_RESULTS' in args and args.NO_RESULTS:
+        database.commit()
+        return []
     return [dict(row) for row in database_cursor.fetchall()]
 
 
