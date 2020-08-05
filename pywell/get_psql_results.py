@@ -38,11 +38,11 @@ def get_psql_results(args):
             query = file.read()
     else:
         query = args.DB_QUERY
-    if 'DB_VALUES' in args and args.DB_VALUES:
+    if 'DB_VALUES' in args.__dict__ and args.DB_VALUES:
         database_cursor.execute(query, args.DB_VALUES)
     else:
         database_cursor.execute(query)
-    if 'NO_RESULTS' in args and args.NO_RESULTS:
+    if 'NO_RESULTS' in args.__dict__ and args.NO_RESULTS:
         database.commit()
         return []
     return [dict(row) for row in database_cursor.fetchall()]
